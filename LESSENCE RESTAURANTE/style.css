@@ -1,0 +1,363 @@
+/* --- 0. COMPORTAMIENTO GLOBAL --- */
+html {
+    scroll-behavior: smooth; /* Esto hace que el desplazamiento sea suave [cite: 2026-02-16] */
+}
+/* --- 1. ESTILOS GENERALES --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Playfair Display', serif; background-color: #fcf8f5; }
+
+/* --- 2. NAVBAR (Navegación Elegante) --- */
+/* --- ESTILO PARA EL LOGO DEL NAVBAR --- */
+.navbar .logo {
+    font-size: 1.8rem;      /* Antes era más pequeño, ahora tendrá fuerza [cite: 2026-02-16] */
+    font-weight: bold;
+    letter-spacing: 2px;    /* Un poco de aire entre letras para que sea elegante */
+    text-transform: uppercase;
+    font-family: 'Playfair Display', serif; /* Usamos la misma letra pija del título [cite: 2026-02-16] */
+    color: #1a1a1a;         /* Color oscuro para que contraste con el blanco */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: white;
+    position: fixed; /* Se queda arriba al bajar */
+    width: 100%;
+    z-index: 1000;
+}
+
+.nav-links {
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #1a1a1a;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+}
+
+/* --- 2.1. MENU TOGGLE (Las 3 rayitas para el móvil) --- */
+.menu-toggle {
+    display: none; /* Se esconde en el ordenador */
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: #1a1a1a; /* Color oscuro para que se vea sobre el blanco */
+    transition: 0.3s;
+}
+
+/* --- 2.2 BOTÓN DE RESERVA EN NAVBAR --- */
+.btn-nav {
+    background-color: #b5a48b; /* Tu dorado */
+    color: white !important;
+    padding: 8px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-nav:hover {
+    background-color: #1a1a1a; /* Se vuelve negro al pasar el ratón */
+}
+
+.btn-nav:active {
+    transform: scale(0.95); /* Esto hace que el botón se "hunda" un pelín al clicarlo */
+    background-color: #8e7d66; /* Un dorado un poco más oscuro al pulsar */
+}
+
+/* --- 3. HERO (La Portada que ya tienes) --- */
+.hero {
+    height: 100vh;
+    width: 100%;
+    overflow: hidden; /* Evita que el título se salga de la pantalla [cite: 2026-02-16] */
+    position: relative;
+}
+
+.hero-overlay {
+    background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1000');
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Capa oscura */
+    background-blend-mode: overlay;
+    height: 100%;
+    display: flex;
+    flex-direction: column; /* Alinea los elementos uno debajo de otro [cite: 2026-02-16] */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.hero-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem; /* El tamaño pijo que querías [cite: 2026-02-15] */
+    letter-spacing: 15px;
+    text-transform: uppercase;
+    margin: 0; /* Quitamos márgenes que puedan empujar la foto [cite: 2026-02-16] */
+}
+
+/* --- 3.1 EL BOTÓN (Cajita armónica) --- */
+.btn-explorar {
+    display: inline-block;
+    margin-top: 30px;      /* Separación con el texto [cite: 2026-02-16] */
+    padding: 15px 45px;    /* Respiro dentro de la caja [cite: 2026-02-16] */
+    border: 1px solid white; /* Borde blanco elegante [cite: 2026-02-16] */
+    color: white;          /* Texto blanco [cite: 2026-02-16] */
+    text-decoration: none; /* ¡QUITA EL AZUL! [cite: 2026-02-15] */
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.9rem;
+    transition: all 0.4s ease; /* Para que el efecto sea suave [cite: 2026-02-16] */
+    z-index: 10;
+}
+
+.btn-explorar:hover {
+    background-color: white; /* Se rellena al pasar el ratón [cite: 2026-02-16] */
+    color: black;            /* El texto cambia a negro [cite: 2026-02-16] */
+}
+
+/* 4. LA CARTA (Truco de los puntos) */
+.seccion-carta {
+   padding: 80px 20px 40px 20px; /* Mucho aire arriba y abajo para que respire [cite: 2026-02-16] */
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.seccion-carta h2 {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 80px; /* Separación enorme con los platos [cite: 2026-02-16] */
+    color: #1a1a1a;
+}
+
+.seccion-carta h3 {
+    font-size: 1.8rem;
+    color: #b5a48b;        /* Usamos tu dorado para las categorías */
+    margin-top: 50px;      /* Separación con el bloque de arriba */
+    margin-bottom: 30px;   /* Separación con el primer plato */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: 1px solid #eee; /* Una línea muy finita para separar visualmente */
+    padding-bottom: 10px;
+    display: block;
+}
+
+.plato {
+    display: flex;
+    align-items: baseline;
+    gap: 15px;
+    margin-bottom: 40px; /* Más espacio entre cada plato [cite: 2026-02-16] */
+}
+
+.puntos {
+    flex-grow: 1; /* Ocupa el espacio intermedio */
+    border-bottom: 2px dotted #b5a48b; /* Los puntos dorados */
+}
+
+/* --- 5 SECCIÓN CONTACTO --- */
+.seccion-contacto {
+    padding: 100px 20px;
+    background-color: #fcf8f5; /* Tu beige corporativo */
+    font-family: 'Playfair Display', serif; /* La tipografía elegante */
+}
+
+.contenedor-contacto {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    gap: 50px;
+    flex-wrap: wrap; /* Para que en móvil se ponga uno debajo de otro */
+}
+
+.contenedor-contacto h2 {
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+}
+
+.bloque-reserva {
+    flex: 1;
+    min-width: 300px;
+}
+
+.bloque-info p {
+    margin-bottom: 20px; /* Separación entre líneas */
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espacio entre el icono y el texto [cite: 2026-02-16] */
+}
+
+.formulario-reserva input, 
+.formulario-reserva select {
+    width: 100%;
+    padding: 18px; /* Más espacio para que respire [cite: 2026-02-16] */
+    margin-bottom: 25px;
+    border: 1px solid #b5a48b; /* Tu dorado corporativo */
+    background-color: transparent;
+    font-family: 'Playfair Display', serif; /* Forzamos la letra aquí también */
+    font-size: 1rem;
+}
+
+.formulario-reserva .btn-explorar {
+    width: 100%;
+    cursor: pointer;
+    border: none;
+    background-color: #b5a48b;
+    color: white;
+    padding: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* --- 5.2 CONTENEDOR DEL MAPA REAL --- */
+.contenedor-mapa {
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Esto lo centra sí o sí */
+    margin-top: 30px;
+    flex-basis: 100%;
+}
+
+.contenedor-mapa iframe {
+    width: 100%; /* En PC ocupa todo su bloque */
+    max-width: 600px; /* Para que no sea gigante */
+    border-radius: 10px;
+    border: 1px solid #b5a48b;
+}
+
+/* --- 6. FOOTER (El cierre elegante) --- */
+.footer {
+    background-color: #1a1a1a; /* Fondo oscuro pijo [cite: 2026-02-16] */
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.footer-content p {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.social-links a {
+    color: #b5a48b; /* Tus iconos dorados [cite: 2026-02-16] */
+    font-size: 1.2rem;
+    margin: 0 10px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.social-links a:hover {
+    color: white; /* Brillo al pasar el ratón [cite: 2026-02-16] */
+}
+
+.footer-link, .footer-link:visited {
+    color: #b5a48b !important; /* Forzamos el dorado incluso si ya has clicado [cite: 2026-02-16] */
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.footer-link:hover {
+    color: white !important; /* Cambia a blanco al pasar el ratón */
+    letter-spacing: 1px;    /* Un pequeño efecto de expansión elegante [cite: 2026-02-15] */
+}
+
+/* --- EFECTO DE REVELADO JS--- */
+.revelar {
+    opacity: 0;
+    transform: translateY(30px); /* Empieza un poco más abajo */
+    transition: all 0.8s ease-out;
+}
+
+.revelar.activo {
+    opacity: 1;
+    transform: translateY(0); /* Sube a su sitio original */
+}
+
+.revelar.retraso {
+    transition-delay: 0.3s; /* El segundo bloque tardará un poquito más en salir */
+}
+
+/* --- ESTILO PARA LAS FOTOS DE LA CARTA --- */
+.foto-plato {
+    width: 100%;
+    height: 250px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    border-radius: 15px;
+    border: 1px solid #b5a48b;
+}
+
+.foto-plato img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Esto hace que la foto se adapte sin deformarse */
+    transition: transform 0.5s ease;
+}
+
+.foto-plato:hover img {
+    transform: scale(1.1); /* Efecto de zoom suave al pasar el ratón */
+}
+
+/* 6. RESPONSIVE (@media) */
+/* --- 6. RESPONSIVE FINAL UNIFICADO --- */
+@media (max-width: 768px) {
+    /* 1. Títulos y Hero (Elegancia pura) */
+    h2 { font-size: 2rem !important; }
+    h3 { font-size: 1.5rem !important; margin-top: 30px; }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+        letter-spacing: 3px;
+    }
+
+    /* 2. El Menú Desplegable (Para que el JS funcione) */
+    .nav-links { 
+        display: none; 
+    }
+
+    .nav-links.active {
+        display: flex !important;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: #fcf8f5;
+        padding: 20px;
+        border-bottom: 1px solid #b5a48b;
+        z-index: 1000;
+    }
+
+    .menu-toggle { display: flex !important; }
+
+    /* 3. El Mapa Centrado (¡Por fin!) */
+    .contenedor-mapa iframe {
+        width: 90% !important; 
+        margin: 20px auto;
+        display: block;
+    }
+
+    /* 4. Ajustes de la Carta */
+    .plato {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .puntos { display: none; }
+}
