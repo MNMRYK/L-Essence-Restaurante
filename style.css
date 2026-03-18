@@ -314,7 +314,6 @@ body { font-family: 'Playfair Display', serif; background-color: #fcf8f5; }
 }
 
 /* 6. RESPONSIVE (@media) */
-/* --- 6. RESPONSIVE FINAL UNIFICADO --- */
 @media (max-width: 768px) {
     /* 1. Títulos y Hero (Elegancia pura) */
     h2 { font-size: 2rem !important; }
@@ -344,6 +343,32 @@ body { font-family: 'Playfair Display', serif; background-color: #fcf8f5; }
     }
 
     .menu-toggle { display: flex !important; }
+
+    /* 5. Ajustes del Formulario de Reserva (Evitar desbordamiento) */
+    .formulario-reserva {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 15px; /* Espacio entre campos */
+    }
+
+    .formulario-reserva input, 
+    .formulario-reserva select, 
+    .formulario-reserva button {
+        width: 100% !important; /* Obliga a que ocupen el ancho de su padre */
+        box-sizing: border-box; /* Crucial: incluye el padding en el 100% */
+        max-width: 100%; /* El candado de seguridad */
+    }
+
+    .fila-form {
+        display: flex;
+        flex-direction: column; /* En móvil, mejor uno debajo de otro */
+        gap: 15px;
+    }
+
+    .fila-form input {
+        width: 100% !important;
+    }
 
     /* 3. El Mapa Centrado (¡Por fin!) */
     .contenedor-mapa iframe {
